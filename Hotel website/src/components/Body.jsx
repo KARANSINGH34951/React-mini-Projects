@@ -1,9 +1,18 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Card from './Card'
 import restaurantList from '../utili/Data'
 
 const Body = () => {
   const [listofres,setlistofres]=useState(restaurantList)
+
+  useEffect(()=>{
+    console.log("render");
+  },[])
+
+  const API = fetch("https://foodfire.onrender.com/api/restaurants?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING")
+ 
+
+
   // const [listofres,setlistofre]=useState(
   //   [
   //   {
@@ -110,8 +119,9 @@ const Body = () => {
 
       <div className='filter'>
           <button className='filter-btn' onClick={()=>{
-            listofres=listofres.filter((restaurant)=>restaurant.data.avgRating>4)
-            console.log(listofres);          
+            const filteredlist=listofres.filter((restaurant)=>restaurant.data.avgRating>4)
+            setlistofres(filteredlist)
+            console.log(filteredlist);          
           }}>Top Rated </button>
       </div>
 
