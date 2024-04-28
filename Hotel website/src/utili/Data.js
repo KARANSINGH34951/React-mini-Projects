@@ -2,7 +2,7 @@
 let restaurantList = [
   {
     type: "restaurant",
-    data: {
+    info: {
       type: "F",
       id: "74453",
       name: "Domino's Pizza",
@@ -122,7 +122,7 @@ let restaurantList = [
   },
   {
     type: "restaurant",
-    data: {
+    info: {
       type: "F",
       id: "410476",
       name: "The Brooklyn Creamery - Healthy Ice Cream",
@@ -242,7 +242,7 @@ let restaurantList = [
   },
   {
     type: "restaurant",
-    data: {
+    info: {
       type: "F",
       id: "81094",
       name: "Richie Rich Juices & Shakes",
@@ -362,7 +362,7 @@ let restaurantList = [
   },
   {
     type: "restaurant",
-    data: {
+    info: {
       type: "F",
       id: "311443",
       name: "Siddhi Icecream & Thick Shake",
@@ -482,7 +482,7 @@ let restaurantList = [
   },
   {
     type: "restaurant",
-    data: {
+    info: {
       type: "F",
       id: "307070",
       name: "Pizza Pie",
@@ -602,7 +602,7 @@ let restaurantList = [
   },
   {
     type: "restaurant",
-    data: {
+    info: {
       type: "F",
       id: "76858",
       name: "Feeling Hungry",
@@ -722,7 +722,7 @@ let restaurantList = [
   },
   {
     type: "restaurant",
-    data: {
+    info: {
       type: "F",
       id: "617279",
       name: "Malaxmi Fast Food",
@@ -841,7 +841,7 @@ let restaurantList = [
   },
   {
     type: "restaurant",
-    data: {
+    info: {
       type: "F",
       id: "469264",
       name: "Dessert House",
@@ -961,7 +961,7 @@ let restaurantList = [
   },
   {
     type: "restaurant",
-    data: {
+    info: {
       type: "F",
       id: "395204",
       name: "McDonald's Gourmet Burger Collection",

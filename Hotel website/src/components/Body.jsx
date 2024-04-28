@@ -3,132 +3,42 @@ import Card from './Card'
 import restaurantList from '../utili/Data'
 
 const Body = () => {
-  const [listofres,setlistofres]=useState(restaurantList)
+  const [listofres,setlistofres]=useState([])
 
   useEffect(()=>{
-    console.log("render");
+   fetchdata()
   },[])
 
-  const API = fetch("https://foodfire.onrender.com/api/restaurants?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING")
+  const fetchdata= async()=>{
+    const data = await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=11.3581441&lng=77.7135612&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING')
+   
+    const jsons = await data.json()
+
+    console.log(jsons.data.cards[2].card.card.gridElements.infoWithStyle.restaurants);
+     setlistofres(jsons?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants) 
+  }
+
+  if(listofres.length===0){
+    return <h1>Loading...</h1>
+  }
  
-
-
-  // const [listofres,setlistofre]=useState(
-  //   [
-  //   {
-  //         type: "restaurant",
-  //         data: {
-  //           type: "F",
-  //           id: "74453",
-  //           name: "KFC",
-  //           uuid:  "87727dbd-7f2b-4857-9763-359624165845",
-  //           city: "21",
-  //           area: "Athwa",
-  //           totalRatingsString: "1000+ ratings",
-  //           cloudinaryImageId: "bz9zkh2aqywjhpankb07",
-  //           cuisines: ["Pizzas"],
-  //           costForTwoString: "₹200 FOR TWO",
-  //           deliveryTime: 31,
-  //           minDeliveryTime: 30,
-  //           maxDeliveryTime: 40,
-  //     }},
-  //     {
-  //       type: "restaurant",
-  //       data: {
-  //         type: "F",
-  //         id: "74453",
-  //         name: "KFC",
-  //         uuid:  "87727dbd-7f2b-4857-9763-359624165845",
-  //         city: "21",
-  //         area: "Athwa",
-  //         totalRatingsString: "1000+ ratings",
-  //         cloudinaryImageId: "bz9zkh2aqywjhpankb07",
-  //         cuisines: ["Pizzas"],
-  //         costForTwoString: "₹200 FOR TWO",
-  //         deliveryTime: 31,
-  //         minDeliveryTime: 30,
-  //         maxDeliveryTime: 40,
-  //     },
-  //     }, 
-  // ]
-// )
-
-//   let listofres=[
-
-//     },
-//     {
-//     type: "restaurant",
-//     data: {
-//       type: "F",
-//       id: "74454",
-//       name: "DOMINOS",
-//       uuid: "87727dbd-7f2b-4857-9763-359624165845",
-//       city: "21",
-//       area: "Athwa",
-//       totalRatingsString: "1000+ ratings",
-//       cloudinaryImageId: "bz9zkh2aqywjhpankb07",
-//       cuisines: ["Pizzas"],
-//       costForTwoString: "₹200 FOR TWO",
-//       deliveryTime: 31,
-//       minDeliveryTime: 30,
-//       maxDeliveryTime: 40,
-//   },
-//     },
-//     {
-//       type: "restaurant",
-//       data: {
-//         type: "F",
-//         id: "74456",
-//         name: "Yellow Cafe",
-//         uuid: "87727dbd-7f2b-4857-9763-359624165845",
-//         city: "21",
-//         area: "Athwa",
-//         totalRatingsString: "1000+ ratings",
-//         cloudinaryImageId: "bz9zkh2aqywjhpankb07",
-//         cuisines: ["Pizzas"],
-//         costForTwoString: "₹200 FOR TWO",
-//         deliveryTime: 31,
-//         minDeliveryTime: 30,
-//         maxDeliveryTime: 40,
-//     },
-//     },
-//     {
-//       type: "restaurant",
-//       data: {
-//         type: "F",
-//         id: "74456",
-//         name: "Green Cafe",
-//         uuid: "87727dbd-7f2b-4857-9763-359624165845",
-//         city: "21",
-//         area: "Athwa",
-//         totalRatingsString: "1000+ ratings",
-//         cloudinaryImageId: "bz9zkh2aqywjhpankb07",
-//         cuisines: ["Pizzas"],
-//         costForTwoString: "₹200 FOR TWO",
-//         deliveryTime: 31,
-//         minDeliveryTime: 30,
-//         maxDeliveryTime: 40,
-//     },
-//     },
-// ]
-
-
-  const [count,setcount]=useState()
   return (
     <div className='boby'>
 
       <div className='filter'>
           <button className='filter-btn' onClick={()=>{
-            const filteredlist=listofres.filter((restaurant)=>restaurant.data.avgRating>4)
+            const filteredlist=listofres.filter((restaurant)=>restaurant.info.avgRating>4)
             setlistofres(filteredlist)
             console.log(filteredlist);          
           }}>Top Rated </button>
       </div>
 
       <div className='card-container'>
-        {listofres.map((restaurant) => {
-          return <Card key={restaurant.data.id} {...restaurant.data} />;
-        })}    
+        {listofres.map((restaurant,index) => {
+          return(
+            <Card key={index} {...restaurant?.info} />
+          )
+        })} 
       </div>
 
     </div>
