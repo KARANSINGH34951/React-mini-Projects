@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import Card from './Card'
 import restaurantList from '../utili/Data'
+import Shimmercards from './Shimmercards'
 
 const Body = () => {
   const [listofres,setlistofres]=useState([])
+  const [searchinput,setsearchinput]=useState('')
 
   useEffect(()=>{
    fetchdata()
@@ -18,14 +20,35 @@ const Body = () => {
      setlistofres(jsons?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants) 
   }
 
-  if(listofres.length===0){
-    return <h1>Loading...</h1>
-  }
  
-  return (
+  return  listofres.length===0 ?( 
+    <div className='shimmer-container'>
+      <Shimmercards/>
+      <Shimmercards/>
+    </div>)
+    
+    :
+(
     <div className='boby'>
 
       <div className='filter'>
+
+        <div className='search'>
+            <input type='text' placeholder='search for food' value={searchinput} onChange={(e)=>{
+              setsearchinput(e.target.value)
+            }}/>
+
+            <button 
+            onClick={()=>{
+              const searchedlist = listofres.filter((res)=>{
+                return res.info.name.toLowerCase().includes(searchinput.toLowerCase());  
+              });
+              setlistofres(searchedlist);
+            }}>Search</button>
+
+        </div>  
+
+
           <button className='filter-btn' onClick={()=>{
             const filteredlist=listofres.filter((restaurant)=>restaurant.info.avgRating>4)
             setlistofres(filteredlist)
