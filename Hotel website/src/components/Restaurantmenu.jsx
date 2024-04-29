@@ -10,21 +10,33 @@ const Restaurantmenu = () => {
   },[])
 
   const fetchmenu = async () => { 
-    const data=await fetch('https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=11.3581441&lng=77.7135612&restaurantId=220269&catalog_qa=undefined&isMenuUx4=true&submitAction=ENTER')
+    const data=await fetch('https://foodfire.onrender.com/api/menu?page-type=REGULAR_MENU&complete-menu=true&lat=21.1702401&lng=72.83106070000001&&submitAction=ENTER&restaurantId=186141')
     const json =await data.json()
-    console.log(json);
+    // https://foodfire.onrender.com/api/menu?page-type=REGULAR_MENU&complete-menu=true&lat=21.1702401&lng=72.83106070000001&&submitAction=ENTER&restaurantId=186141
+    console.log(json.data.cards[2]?.card?.card?.info);
+
+    setresinfo(json.data)
   }
-  // https://foodfire.onrender.com/api/menu?page-type=REGULAR_MENU&complete-menu=true&lat=21.1702401&lng=72.83106070000001&&submitAction=ENTER&restaurantId=
+  
   if(resinfo===null){
-    <Shimmercards/>
+    return <Shimmercards/>
   }
+ 
+
+  const {name,cuisines,costForTwoMessage}=resinfo.cards[2].card.card.info
+  // const {itemcard}=resinfo.cards[2]
+  const {itemcard}=resinfo.cards[4].groupedCard.cardGroupMap.REGULAR.cards[1].card.card.name
+ 
 
   return (
     <div className='menu'>
-      <h1>Name of res</h1>
-      <h3>menu</h3>
+      {/* <h1>{resinfo.cards[2].card.card.info.name}</h1> */}
+
+      <h1>{name}</h1>
+      <h3>{cuisines.join(", ")}</h3>
+      <h3>{costForTwoMessage}</h3>
       <ul>
-        <li>item</li>
+        <li>{resinfo.cards[2].card.card.info.name}</li>
         <li>item</li>
         <li>item</li>
       </ul>
