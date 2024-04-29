@@ -7,8 +7,6 @@ const Shimmercards = () => {
       <div className='shimmercards'></div>
       <div className='shimmercards'></div>
       <div className='shimmercards'></div>
-
-      
     </div>
   )
 }
