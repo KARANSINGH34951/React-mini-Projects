@@ -7,8 +7,6 @@ import useRestaurantMenu from '../utili/useRestaurantMenu'
 
 const Restaurantmenu = () => {
   // const [resinfo,setresinfo]=useState(null)
-
-
     const {id} = useParams()
    
     const resinfo= useRestaurantMenu(id)

@@ -18,7 +18,6 @@ const Body = () => {
    
     const jsons = await data.json()
 
-    // console.log(jsons.data.cards[2].card.card.gridElements.infoWithStyle.restaurants);
      setlistofres(jsons?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants) 
 
     }

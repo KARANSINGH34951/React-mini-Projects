@@ -2,8 +2,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "PT Sans", Calibri, sans-serif;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
 .header{
 height: 80px;
 border: 2px solid black;

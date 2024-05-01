@@ -5,10 +5,6 @@ import Body from './components/Body.jsx'
 import About from './components/About.jsx'
 import {createBrowserRouter,Outlet,RouterProvider} from 'react-router-dom'
 
-// https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=11.3581441&lng=77.7135612&restaurantId=105439&isMenuUx4=true&submitAction=ENTER
-
-
-
 function App() {
   
 
