@@ -88,3 +88,20 @@ padding: 10px;
   flex-wrap: wrap;
   justify-content: space-between;
 }
+
+.usercard{
+  text-align: center;
+  margin: 5px;
+  padding: 5px;
+  align-items: center;
+  height: 270px;
+  width: 20%;
+  background-color: bisque;
+  line-height: -20px;
+}
+
+.about{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}

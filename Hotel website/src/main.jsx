@@ -9,8 +9,6 @@ import Error from './components/Error.jsx'
 import Body from './components/Body.jsx'
 import Restaurantmenu from './components/Restaurantmenu.jsx'
 
-
-
 const router = createBrowserRouter([
   {
     path: '/',

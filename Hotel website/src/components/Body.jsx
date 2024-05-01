@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Card from './Card'
 import restaurantList from '../utili/Data'
 import Shimmercards from './Shimmercards'
+import {Link} from 'react-router-dom'
 
 const Body = () => {
   const [listofres,setlistofres]=useState([])
@@ -11,24 +12,25 @@ const Body = () => {
    fetchdata()
   },[])
 
-  const fetchdata= async()=>{
+   async function fetchdata(){
     const data = await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=11.3581441&lng=77.7135612&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING')
    
     const jsons = await data.json()
 
     // console.log(jsons.data.cards[2].card.card.gridElements.infoWithStyle.restaurants);
      setlistofres(jsons?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants) 
+
+    }
+  
+
+  if(listofres==undefined){
+    <div className='shimmer-container'>
+        <Shimmercards/>
+        <Shimmercards/>
+     </div>
   }
 
- 
-  return  listofres.length===0 ?( 
-    <div className='shimmer-container'>
-      <Shimmercards/>
-      <Shimmercards/>
-    </div>)
-    
-    :
-(
+  return (
     <div className='boby'>
 
       <div className='filter'>
@@ -59,7 +61,9 @@ const Body = () => {
       <div className='card-container'>
         {listofres.map((restaurant,index) => {
           return(
-            <Card key={index} {...restaurant?.info} />
+           <Link key={restaurant.info.id} to={'/restaurant/'+restaurant.info.id}>
+              <Card  {...restaurant?.info} />
+            </Link>
           )
         })} 
       </div>
