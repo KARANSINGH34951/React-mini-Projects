@@ -3,6 +3,7 @@ import Card from './Card'
 import restaurantList from '../utili/Data'
 import Shimmercards from './Shimmercards'
 import {Link} from 'react-router-dom'
+import useOnlineStatus from '../utili/useOnlineStatus'
 
 const Body = () => {
   const [listofres,setlistofres]=useState([])
@@ -18,21 +19,25 @@ const Body = () => {
     const jsons = await data.json()
 
     // console.log(jsons.data.cards[2].card.card.gridElements.infoWithStyle.restaurants);
-     setlistofres(jsons?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants) 
+     setlistofres(jsons?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants) 
 
     }
+
+    const onlinestatus=useOnlineStatus()
+
+    if(onlinestatus===false){
+      return <h1>you are offline</h1>
+    }
   
-
-  if(listofres==undefined){
+  return ( 
+    !listofres || listofres.length === 0 ?
     <div className='shimmer-container'>
-        <Shimmercards/>
-        <Shimmercards/>
-     </div>
-  }
+          <Shimmercards />
+           <Shimmercards />
+    </div> :
 
-  return (
-    <div className='boby'>
-
+     <div className='boby'>
+ 
       <div className='filter'>
 
         <div className='search'>
@@ -59,7 +64,7 @@ const Body = () => {
       </div>
 
       <div className='card-container'>
-        {listofres.map((restaurant,index) => {
+        {listofres.map((restaurant) => {
           return(
            <Link key={restaurant.info.id} to={'/restaurant/'+restaurant.info.id}>
               <Card  {...restaurant?.info} />
