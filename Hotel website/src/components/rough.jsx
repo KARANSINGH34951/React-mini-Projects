@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import Card from './Card'
-// import restaurantList from '../utili/Data'
+import restaurantList from '../utili/Data'
 import Shimmercards from './Shimmercards'
 import {Link} from 'react-router-dom'
 import useOnlineStatus from '../utili/useOnlineStatus'
-import offlineimg from '../image/offlineimg.jpeg'
 
 const Body = () => {
   const [listofres,setlistofres]=useState([])
@@ -26,38 +25,29 @@ const Body = () => {
     const onlinestatus=useOnlineStatus()
 
     if(onlinestatus===false){
-      return <div className='w-full h-full object-cover'>
-        <img src={offlineimg
-      } alt='offline-img' />
-      </div>
+      return <h1>you are offline</h1>
     }
-
-  //   if (!listofres || listofres.length === 0 && !onlinestatus) {
-    
-  //         return <h1>No restaurants found</h1>;
-    
-  // }
   
-  if(listofres===null || listofres.length===0){
-    return <Shimmercards/>
-  }
-  else{
+  return ( 
+    !listofres || listofres.length === 0 ?
+    <div className='shimmer-container'>
+          <Shimmercards />
+           <Shimmercards />
+    </div> :
 
-  
-  return (
-    <div className='boby'>
+     <div className='boby'>
  
-      <div className='filter text-center p-5 '>
+      <div className='filter flex items-center justify-center h-40 bg-slate-500'>
 
-        <div className='search flex items-center justify-center p-1 text-center'>
-            <input className='rounded-md h-11 w-[350px] text-center border border-black' type='text' placeholder='Search here for your delicious food ' value={searchinput} onChange={(e)=>{
+        <div className='search'>
+            <input className='rounded-sm h-10' type='text' placeholder='search for food' value={searchinput} onChange={(e)=>{
               setsearchinput(e.target.value)
             }}/>
 
-            <button className='mx-4 p-3 bg-black text-white rounded-md hover:bg-gray-500'
+            <button 
             onClick={()=>{
               const searchedlist = listofres.filter((res)=>{
-                return res?.info?.name?.toLowerCase()?.includes(searchinput?.toLowerCase());  
+                return res.info.name.toLowerCase().includes(searchinput.toLowerCase());  
               });
               setlistofres(searchedlist);
             }}>Search</button>
@@ -65,17 +55,17 @@ const Body = () => {
         </div>  
 
 
-          {/* <button  onClick={()=>{
+          <button className='filter-btn' onClick={()=>{
             const filteredlist=listofres.filter((restaurant)=>restaurant.info.avgRating>4)
             setlistofres(filteredlist)
             console.log(filteredlist);          
-          }}>Top Rated </button> */}
+          }}>Top Rated </button>
       </div>
 
       <div className='card-container grid grid-cols-4 gap-4 p-10 m-4'>
-        {listofres?.map((restaurant) => {
+        {listofres.map((restaurant) => {
           return(
-            <Link key={restaurant.info.id} to={'/restaurant/'+restaurant.info.id}>
+           <Link key={restaurant.info.id} to={'/restaurant/'+restaurant.info.id}>
               <Card  {...restaurant?.info} />
             </Link>
           )
@@ -84,7 +74,6 @@ const Body = () => {
 
     </div>
   )
-  }
 }
 
 export default Body

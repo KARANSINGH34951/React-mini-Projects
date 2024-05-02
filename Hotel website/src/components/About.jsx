@@ -6,9 +6,7 @@ const About = () => {
     <div className='about'>
       <h1>OUR TEAM MEMBERS</h1>
       <UserCard username="kara singh"/>
-      <UserCard/>
-      <UserCard/>
-      <UserCard/>
+      
 
 
     </div>

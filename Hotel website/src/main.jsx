@@ -9,6 +9,8 @@ import Error from './components/Error.jsx'
 import Body from './components/Body.jsx'
 import Restaurantmenu from './components/Restaurantmenu.jsx'
 
+import ShimmerCards from './components/Shimmercards.jsx'
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -34,6 +36,10 @@ const router = createBrowserRouter([
     ],
     errorElement:<Error/>
   },
+  {
+    path: '/shimmer',
+    element: <ShimmerCards />
+  }
 ])
 
 

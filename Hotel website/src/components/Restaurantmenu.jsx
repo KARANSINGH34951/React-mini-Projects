@@ -11,9 +11,9 @@ const Restaurantmenu = () => {
    
     const resinfo= useRestaurantMenu(id)
    
-  if(resinfo===null){
-    return <Shimmercards/>
-  }
+    if(resinfo===null){
+      return <Shimmercards/>
+    }
 
 
   const {name,cuisines,costForTwoMessage}=resinfo.cards[2].card.card.info
