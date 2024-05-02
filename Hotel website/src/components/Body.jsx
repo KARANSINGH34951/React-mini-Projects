@@ -4,24 +4,15 @@ import restaurantList from '../utili/Data'
 import Shimmercards from './Shimmercards'
 import {Link} from 'react-router-dom'
 import useOnlineStatus from '../utili/useOnlineStatus'
+import useRestaurant from '../utili/useRestaurant'
 
 const Body = () => {
-  const [listofres,setlistofres]=useState([])
+  
   const [searchinput,setsearchinput]=useState('')
+const listofres = useRestaurant()
+ 
 
-  useEffect(()=>{
-   fetchdata()
-  },[])
-
-   async function fetchdata(){
-    const data = await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=11.3581441&lng=77.7135612&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING')
-   
-    const jsons = await data.json()
-
-     setlistofres(jsons?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants) 
-
-    }
-
+// console.log(listofres);
     const onlinestatus=useOnlineStatus()
 
     if(onlinestatus===false){
