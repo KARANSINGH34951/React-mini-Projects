@@ -6,9 +6,7 @@ const Shimmercards = () => {
       <div className=' shadow-xl  rounded-lgb text-center h-[410px]'>lorem200</div>
       <div className=' shadow-xl  rounded-lgb text-center h-[410px]'>lorem200</div>
       <div className=' shadow-xl  rounded-lgb text-center h-[410px]'>lorem200</div>
-      <div className=' shadow-xl  rounded-lgb text-center h-[410px]'>lorem200</div>
-      
-      
+      <div className=' shadow-xl  rounded-lgb text-center h-[410px]'>lorem200</div> 
       
     </div>
   )

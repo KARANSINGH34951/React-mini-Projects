@@ -72,7 +72,7 @@ const Body = () => {
           }}>Top Rated </button> */}
       </div>
 
-      <div className='card-container grid grid-cols-4 gap-4 p-10 m-4'>
+      <div className='card-container grid sm:gird-col-2 grid-cols-4 lg:grid-cols-4 md:grid-flow-col-3  gap-4 p-10 m-4'>
         {listofres?.map((restaurant) => {
           return(
             <Link key={restaurant.info.id} to={'/restaurant/'+restaurant.info.id}>
