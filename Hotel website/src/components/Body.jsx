@@ -27,8 +27,7 @@ const Body = () => {
 
     if(onlinestatus===false){
       return <div className='w-full h-full object-cover'>
-        <img src={offlineimg
-      } alt='offline-img' />
+        <img src={offlineimg} alt='offline-img' />
       </div>
     }
 
@@ -38,11 +37,10 @@ const Body = () => {
     
   // }
   
-  if(listofres===null || listofres.length===0){
+  if(listofres===undefined || listofres.length===0){
     return <Shimmercards/>
   }
-  else{
-
+  
   
   return (
     <div className='boby'>
@@ -64,10 +62,7 @@ const Body = () => {
 
         </div>
 
-         
-
-
-          {/* <button  onClick={()=>{
+           {/* <button  onClick={()=>{
             const filteredlist=listofres.filter((restaurant)=>restaurant.info.avgRating>4)
             setlistofres(filteredlist)
             console.log(filteredlist);          
@@ -86,7 +81,7 @@ const Body = () => {
 
     </div>
   )
-  }
+  
 }
 
 export default Body
