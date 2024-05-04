@@ -8,13 +8,13 @@ import { useDispatch } from 'react-redux'
 
 
 const Restaurantmenu = () => {
-  // const [resinfo,setresinfo]=useState(null)
+  
   const dispatch=useDispatch()
 
     const handleitem=()=>{
-      console.log("h");
       dispatch(addToCart("piiza"))
     }
+
     const {id} = useParams()
    
     const resinfo= useRestaurantMenu(id)
@@ -22,28 +22,28 @@ const Restaurantmenu = () => {
     if(resinfo===null){
       return <Shimmercards/>
     }
-
-
   const {name,cuisines,costForTwoMessage,cloudinaryImageId,avgRating
   }=resinfo.cards[2].card.card.info
-  // const {offer}=resinfo.cards[2].card.card.info.aggregatedDiscountInfo.descriptionList
-  // const {itemcard} =resinfo.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card
-  //  console.log(offer);
-//  console.log(resinfo.cards[2].card.card.info);
 
-  
-
-    
+  console.log(resinfo.cards[5].
+    groupedCard.
+    cardGroupMap.
+    REGULAR.cards[2].card.card);
+   const { itemCards } = resinfo.cards[5].
+    groupedCard.
+    cardGroupMap.
+    REGULAR.cards[2].card.card
+  // console.log(itemCards);
  
   return (
     <div className='menu text-center'>
       {/* <h1>{resinfo.cards[2].card.card.info.name}< /h1> */}
-
+      <h4>{avgRating}</h4>
       <h1 className='font-bold text-2xl my-5'>{name}</h1>
       {/* <h2  className='font-bold text-2xl my-5'>{offer}</h2> */}
       <h3 className='font-bold text-2xl my-5'>{cuisines.join(", ")}</h3>
       <h3 className='font-bold textr-2xl my-5'>{costForTwoMessage}</h3>
-      <button onClick={handleitem}>ADD+</button>
+      
 
       <img
         alt='restaurant image' className='object-cover rounded-lg flex justify-center items-center h-[220px] w-full'
@@ -53,9 +53,24 @@ const Restaurantmenu = () => {
         }
       />
 
+      <p className='text-2xl'>{itemCards.title}</p>
+
       <ul>
 
-        
+      {itemCards.map(item =>
+                <li key={item.card.info.id}>
+                    {item.card.info.name} - {' Rs.'}
+                    {item.card.info.price / 100}
+                    <img src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/" + item.card.info.imageId} alt='img'/>
+
+                    <h2>{item.card.info.category}</h2>
+
+                    <button onClick={handleitem}>ADD+</button>
+                </li>
+// {item.card.info.
+  // imageId}
+              )
+      }
         {/* <li>{itemcards}</li> */}
         {/* <li>{itemcard.itemCards[3].card.info.name}</li> */}
  
