@@ -7,12 +7,12 @@ import { addToCart } from '../utili/Cartslice'
 import { useDispatch } from 'react-redux'
 
 
-const Restaurantmenu = () => {
+const Restaurantmenu = ({item}) => {
   
   const dispatch=useDispatch()
 
-    const handleitem=()=>{
-      dispatch(addToCart("piiza"))
+    const handleitem=(item)=>{
+      dispatch(addToCart(item))
     }
 
     const {id} = useParams()
