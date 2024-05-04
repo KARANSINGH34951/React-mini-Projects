@@ -19,8 +19,8 @@ const Body = () => {
    
     const jsons = await data.json()
 
-     setlistofres(jsons?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants) 
-
+     setlistofres(jsons?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants) 
+    
     }
 
     const onlinestatus=useOnlineStatus()
@@ -31,34 +31,29 @@ const Body = () => {
       </div>
     }
 
-  //   if (!listofres || listofres.length === 0 && !onlinestatus) {
-    
-  //         return <h1>No restaurants found</h1>;
-    
-  // }
   
-  if(listofres===undefined || listofres.length===0){
+  if((!listofres || listofres.length===0) && onlinestatus===true){
     return <Shimmercards/>
   }
+
+  else{
   
-  
-  return (
-    <div className='boby'>
+  return ( <div className='boby'>
  
       <div className='filter text-center p-5 '>
 
         <div className='search flex items-center justify-center p-1 text-center'>
-            <input className='rounded-md h-11 w-[350px] text-center border border-black' type='text' placeholder='Search here for your delicious food ' value={searchinput} onChange={(e)=>{
-              setsearchinput(e.target.value)
-            }}/>
+              <input className='rounded-md h-11 w-[350px] text-center border border-black' type='text' placeholder='Search here for your delicious food ' value={searchinput} onChange={(e)=>{
+                setsearchinput(e.target.value)
+              }}/>
 
-            <button className='mx-4 p-3 bg-black text-white rounded-md hover:bg-gray-500'
-            onClick={()=>{
-              const searchedlist = listofres.filter((res)=>{
-                return res?.info?.name?.toLowerCase()?.includes(searchinput?.toLowerCase());  
-              });
-              setlistofres(searchedlist);
-            }}>Search</button>
+              <button className='mx-4 p-3 bg-black text-white rounded-md hover:bg-gray-500'
+              onClick={()=>{
+                const searchedlist = listofres.filter((res)=>{
+                  return res?.info?.name?.toLowerCase()?.includes(searchinput?.toLowerCase());  
+                });
+                setlistofres(searchedlist);
+              }}>Search</button>
 
         </div>
 
@@ -81,7 +76,7 @@ const Body = () => {
 
     </div>
   )
-  
+}
 }
 
 export default Body

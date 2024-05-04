@@ -1,16 +1,15 @@
-import React from 'react'
-import img1 from '../image/img1.png'
 
-const UserCard = () => {
+const UserCard = (props) => {
   return (
-    <div className='usercard h-40 w-96 bg-slate-700'>
-      {/* <img className='rounded-full object-cover h-au w-full' src={img1} alt='img'/> */}
-      <div className='text-center'>
-        <h3>NAME:KARAN SINGH</h3>
-        <h4>Location: Tamilndu</h4>
-        <h5>welcome to about us</h5>
+   
+      
+      <div className='text-center h-[350px] w-[250px] bg-black text-white'>
+        <img className='w-full h-[70%]' src={props.img} alt="img" />
+        <h3>{props.username}</h3>
+        <h4>Location: {props.location}</h4>
+        <h5>{props.message}</h5>
       </div>
-    </div>
+ 
   )
 }
 
