@@ -1,14 +1,20 @@
-import React, { useEffect } from 'react'
+// import React, { useEffect } from 'react'
 import Shimmercards from './Shimmercards'
 import {useParams} from 'react-router-dom'
 import useRestaurantMenu from '../utili/useRestaurantMenu'
-import RestaurantCategory from './RestaurantCategory'
-import { addToCart } from '../utili/Cart'
+// import RestaurantCategory from './RestaurantCategory'
+import { addToCart } from '../utili/Cartslice'
 import { useDispatch } from 'react-redux'
 
 
 const Restaurantmenu = () => {
   // const [resinfo,setresinfo]=useState(null)
+  const dispatch=useDispatch()
+
+    const handleitem=()=>{
+      console.log("h");
+      dispatch(addToCart("piiza"))
+    }
     const {id} = useParams()
    
     const resinfo= useRestaurantMenu(id)
@@ -23,13 +29,9 @@ const Restaurantmenu = () => {
   // const {offer}=resinfo.cards[2].card.card.info.aggregatedDiscountInfo.descriptionList
   // const {itemcard} =resinfo.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card
   //  console.log(offer);
-  console.log(resinfo.cards[2].card.card.info);
+//  console.log(resinfo.cards[2].card.card.info);
 
-
-    const handleitem=()=>{
-      console.log("h");
-      dispatch(addToCart("piiza"))
-    }
+  
 
     
  

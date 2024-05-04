@@ -8,7 +8,7 @@ import {createBrowserRouter,RouterProvider} from "react-router-dom";
 import Error from './components/Error.jsx' 
 import Body from './components/Body.jsx'
 import Restaurantmenu from './components/Restaurantmenu.jsx'
-
+import Cart from './components/Cart.jsx'
 import ShimmerCards from './components/Shimmercards.jsx'
 
 const router = createBrowserRouter([
@@ -27,6 +27,10 @@ const router = createBrowserRouter([
       {
         path:'/contact',
         element:<Contact/>
+      },
+      {
+        path:'/cart',
+        element:<Cart/>
       },
       {
         path:'/restaurant/:id',

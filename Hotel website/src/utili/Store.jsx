@@ -1,6 +1,6 @@
-import React from 'react'
+
 import {configureStore} from '@reduxjs/toolkit'
-import Cartreducer from './Cart'
+import Cartreducer from './Cartslice'
 
 
 const Store = configureStore({
