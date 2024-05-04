@@ -5,17 +5,20 @@ import Body from './components/Body.jsx'
 import About from './components/About.jsx'
 import {Outlet} from 'react-router-dom'
 import Footer from './components/Footer.jsx'
+import  {Provider} from 'react-redux'
+import Store from './utili/Store.jsx'
 
 function App() {
   
 
   return (
-    <div className='app'>
-      <Header />
-      <Outlet />
-      <Footer />
-    
-    </div>
+   <Provider store={Store}>
+      <div className='app'>
+        <Header />
+          <Outlet />
+          <Footer />
+      </div>
+    </Provider>
   )
 
 }

@@ -62,7 +62,9 @@ const Body = () => {
               setlistofres(searchedlist);
             }}>Search</button>
 
-        </div>  
+        </div>
+
+         
 
 
           {/* <button  onClick={()=>{
