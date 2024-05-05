@@ -12,7 +12,6 @@ const Cart = () => {
       
         {/* {cartitem.length==0 && <h2>Your cart is empty, Add some items to the cart 🛒.</h2>} */}
 
-
     </div>
 
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import  { useEffect, useState } from 'react'
 import Card from './Card'
 // import restaurantList from '../utili/Data'
 import Shimmercards from './Shimmercards'
@@ -36,13 +36,13 @@ const Body = () => {
     return <Shimmercards/>
   }
 
-  else{
   
-  return ( <div className='boby'>
- 
-      <div className='filter text-center p-5 '>
+  return ( 
+    <div className='boby'>
+        
+      <div className=' text-center p-5 '>
 
-        <div className='search flex items-center justify-center p-1 text-center'>
+        <div className=' flex items-center justify-center p-2 text-center'>
               <input className='rounded-md h-11 w-[350px] text-center border border-black' type='text' placeholder='Search here for your delicious food ' value={searchinput} onChange={(e)=>{
                 setsearchinput(e.target.value)
               }}/>
@@ -56,6 +56,7 @@ const Body = () => {
               }}>Search</button>
 
         </div>
+
 
            {/* <button  onClick={()=>{
             const filteredlist=listofres.filter((restaurant)=>restaurant.info.avgRating>4)
@@ -76,7 +77,7 @@ const Body = () => {
 
     </div>
   )
-}
+
 }
 
 export default Body

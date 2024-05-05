@@ -18,7 +18,8 @@ const Header = () => {
 
     <div className='nav-item'>
       <ul className='flex'>
-        <li className='p-4 m-3'>Online Status : {onlinestatus ? "green":"red"}</li>
+        
+        <li className='p-4 m-3'>Online Status : {onlinestatus ? "🟢":"🔴"}</li>
         <li  className='p-4 m-3'><Link to='/'>Home</Link></li>
         <li  className='p-4 m-3'><Link to='/about'>About Us</Link></li>
         <li  className='p-4 m-3'><Link to='/contact'>Contact Us</Link></li>

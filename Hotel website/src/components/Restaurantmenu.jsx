@@ -37,51 +37,50 @@ const Restaurantmenu = ({item}) => {
  
   return (
     <div className='menu text-center'>
-      {/* <h1>{resinfo.cards[2].card.card.info.name}< /h1> */}
-      <h4>{avgRating}</h4>
-      <h1 className='font-bold text-2xl my-5'>{name}</h1>
-      {/* <h2  className='font-bold text-2xl my-5'>{offer}</h2> */}
-      <h3 className='font-bold text-2xl my-5'>{cuisines.join(", ")}</h3>
-      <h3 className='font-bold textr-2xl my-5'>{costForTwoMessage}</h3>
-      
-
+        <h1 className='font-bold text-4xl my-5'>{name}</h1>
+      <div className='flex  justify-center items-center'>
       <img
-        alt='restaurant image' className='object-cover rounded-lg flex justify-center items-center h-[220px] w-full'
+        alt='restaurant image' className='object-cover rounded-lg flex justify-center items-center h-[220px] w-[40%]'
         src={
            "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/" +
           cloudinaryImageId 
-        }
-      />
+        }/>
+      <div className='mx-10'>
+      
+        <h3 className='font-bold text-2xl my-5'>{cuisines.join(", ")}</h3>
+        <h4>Avg Rating : {avgRating}</h4>
+        <h3 className='font-bold textr-2xl my-5'>{costForTwoMessage}</h3>
+        <button className='border border-black rounded-md p-2 bg-black text-white'>Buy Now</button>
+      </div> 
+      
+      </div>
+      <h1 className='font-bold text-4xl my-5'>Menu</h1>
 
-      <p className='text-2xl'>{itemCards.title}</p>
+      <ul className='flex-row py-10  px-20 border border-black bg-orange-200'>
 
-      <ul>
-
+      <div className=' border border-black'>
       {itemCards.map(item =>
-                <li key={item.card.info.id}>
+                <li  key={item.card.info.id}>
+                  <div className='py-10 px-10 md:px-36 lg:px-40 grid grid-cols-2 justify-around items-center'>  
+                    <div>
+                        <img className='inline-block ' src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/" + item.card.info.imageId} alt='img'/>
+                    </div>
+
+                    <div className='inline-block'>
                     {item.card.info.name} - {' Rs.'}
-                    {item.card.info.price / 100}
-                    <img src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/" + item.card.info.imageId} alt='img'/>
-
-                    <h2>{item.card.info.category}</h2>
-
-                    <button onClick={handleitem}>ADD+</button>
+                      {item.card.info.price / 100}
+                      <h2>{item.card.info.category}</h2>
+                      <button className='border border-black rounded-md bg-black text-white p-2' onClick={handleitem}>ADD+</button>
+                   </div>
+                   </div>
+                    
                 </li>
-// {item.card.info.
-  // imageId}
               )
       }
-        {/* <li>{itemcards}</li> */}
-        {/* <li>{itemcard.itemCards[3].card.info.name}</li> */}
- 
+
+      </div>
       
-       {/* {
-        itemcard && itemcard.map((res,index)=>{
-            return(
-              <li key={index}>{res.card.info.name}</li>
-            )
-        })
-       } */}
+      
        
       </ul>
     </div>
