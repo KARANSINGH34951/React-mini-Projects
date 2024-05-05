@@ -28,7 +28,7 @@ const Counter = () => {
           <div>
             <h2 className='text-6xl font-bold '> 
               {counter && <CountUp start={0} end={22} duration={6}/>}+</h2>
-            <p className='py-2 text-4xl'>State Acess</p>
+            <p className='py-2 text-4xl'>State Access</p>
           </div>
           
 

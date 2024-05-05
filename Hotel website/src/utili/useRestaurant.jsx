@@ -5,18 +5,28 @@ const useRestaurant = () => {
   const [listofres,setlistofres]=useState([])
 
   useEffect(()=>{
+    let lon , lat;
+    navigator.geolocation.getCurrentPosition(async (result) => {
+      console.log(result);
+      const l = result.coords;
+
+      // Object.entries(result)
+      lon = l.longitude;
+      lat = l.latitude;
+      console.log(lon);
+      console.log(lat);
+    });
     fetchdata()
 },[])
 
 
 async function fetchdata(){
-  const data = await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=11.3581441&lng=77.7135612&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING')
+  const data = await fetch(`https://www.swiggy.com/dapi/restaurants/list/v5?lat=${lat}&lng=${lon}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`)
  
   const jsons = await data.json()
 
    setlistofres(jsons?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
-  //  console.log(jsons?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle); 
-
+ 
   }
 
   return listofres
