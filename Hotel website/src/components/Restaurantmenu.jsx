@@ -7,12 +7,13 @@ import { addToCart } from '../utili/Cartslice'
 import { useDispatch } from 'react-redux'
 
 
-const Restaurantmenu = ({item}) => {
+const Restaurantmenu = () => {
   
   const dispatch=useDispatch()
 
     const handleitem=(item)=>{
       dispatch(addToCart(item))
+      console.log(item);
     }
 
     const {id} = useParams()
@@ -25,10 +26,10 @@ const Restaurantmenu = ({item}) => {
   const {name,cuisines,costForTwoMessage,cloudinaryImageId,avgRating
   }=resinfo.cards[2].card.card.info
 
-  console.log(resinfo.cards[5].
-    groupedCard.
-    cardGroupMap.
-    REGULAR.cards[2].card.card);
+  // console.log(resinfo.cards[5].
+  //   groupedCard.
+  //   cardGroupMap.
+  //   REGULAR.cards[2].card.card);
    const { itemCards } = resinfo.cards[5].
     groupedCard.
     cardGroupMap.
@@ -70,7 +71,7 @@ const Restaurantmenu = ({item}) => {
                     {item.card.info.name} - {' Rs.'}
                       {item.card.info.price / 100}
                       <h2>{item.card.info.category}</h2>
-                      <button className='border border-black rounded-md bg-black text-white p-2' onClick={handleitem}>ADD+</button>
+                      <button className='border border-black rounded-md bg-black text-white p-2' onClick={()=>handleitem(item)}>ADD+</button>
                    </div>
                    </div>
                     

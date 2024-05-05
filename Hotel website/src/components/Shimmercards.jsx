@@ -15,9 +15,7 @@ const Shimmercards = () => {
       <Shimmercards1 />
       <Shimmercards1 />
       <Shimmercards1 />
-      <Shimmercards1 />
 
-        
     </div>
   )
 }
