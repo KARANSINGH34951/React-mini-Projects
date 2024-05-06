@@ -9,19 +9,34 @@ import offlineimg from '../image/offlineimg.jpeg'
 const Body = () => {
   const [listofres,setlistofres]=useState([])
   const [searchinput,setsearchinput]=useState('')
+  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState(null);
 
   useEffect(()=>{
-   fetchdata()
-  },[])
-
-   async function fetchdata(){
-    const data = await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=11.3581441&lng=77.7135612&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING')
-   
-    const jsons = await data.json()
-
-     setlistofres(jsons?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants) 
-    
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setLatitude(position.coords.latitude);
+          setLongitude(position.coords.longitude);
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
+    } else {
+      console.error('Geolocation is not supported by this browser.');
     }
+
+    async function fetchdata() {
+      const data = await fetch(`https://www.swiggy.com/dapi/restaurants/list/v5?lat=${latitude}&lng=${longitude}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`)
+   
+      const jsons = await data.json()
+
+      setlistofres(jsons?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants) 
+    }
+
+    fetchdata();
+  }, [latitude, longitude]);
 
     const onlinestatus=useOnlineStatus()
 
