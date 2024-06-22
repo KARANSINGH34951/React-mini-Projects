@@ -11,6 +11,7 @@ import Restaurantmenu from './components/Restaurantmenu.jsx'
 import Cart from './components/Cart.jsx'
 import ShimmerCards from './components/Shimmercards.jsx'
 
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
     ],
     errorElement:<Error/>
   },
+  // {
+  //   path: '/login',
+  //   element: <Login/>
+  // },
   {
     path: '/shimmer',
     element: <ShimmerCards />
